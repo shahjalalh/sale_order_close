@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="view_order_form_inherit2" model="ir.ui.view">
+            <field name="name">sale.order.form.order.close</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field eval="8" name="priority"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//button[@name='action_cancel']" position="after">
+                    <button name="%(action_sale_order_close)d" string="Close Order" type="action" class="oe_highlight" groups="sale_order_close.group_sale_order_close" attrs="{'invisible': ['|','|',('state','=','done'),('state','=','draft'),('state','=','cancel')]}"/>
+
+                </xpath>
+
+           </field>
+        </record>
+    </data>
+</openerp>

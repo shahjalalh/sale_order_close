@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_so_close" model="ir.ui.view">
+            <field name="name">Order Close</field>
+            <field name="model">sale.order.close</field>
+            <field name="arch" type="xml">
+                <form string="SO Close">
+                    <div>
+                        <h1 class="bg-danger">
+                            <p class="text-danger text-center"><strong><span class="glyphicon glyphicon-warning-sign"></span> Danger: </strong>You are going to close the Order. <span class="glyphicon glyphicon-warning-sign"></span> </p>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <field name="order_close_reason" />
+                    </group>
+                    <footer>
+                        <button name="sale_order_close" string="Close Order" type="object" class="oe_highlight" context="{'order_close_reason': order_close_reason}"/>
+                      or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                  </footer>
+             </form>
+            </field>
+        </record>
+
+        <record id="action_sale_order_close" model="ir.actions.act_window">
+            <field name="name">Order Close</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.close</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>
